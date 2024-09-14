@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Small Thumbnails
+// @name         Small YouTube Thumbnails
 // @namespace    http://tampermonkey.net/
 // @version      2024-09-14
 // @description  Reduce the size of YouTube thumbnails
