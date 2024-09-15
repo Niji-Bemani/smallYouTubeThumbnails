@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Small YouTube Thumbnails
 // @namespace    http://tampermonkey.net/
-// @version      2024-09-15
+// @version      2024-09-16
 // @description  Reduce the size of YouTube thumbnails
 // @author       Niji Bemani
 // @match        https://www.youtube.com/*
@@ -15,7 +15,7 @@
 
     // Minimize all thumbnails
     const minimizeThumbnails = function() {
-        document.querySelectorAll('ytd-thumbnail, ytd-playlist-thumbnail, ytd-channel-renderer #avatar-section')
+        document.querySelectorAll('ytd-thumbnail, ytd-playlist-thumbnail, ytd-channel-renderer #avatar-section, ytd-movie-renderer .thumbnail-container')
             .forEach(node => {node.style.maxWidth = 0});
     };
 
@@ -27,7 +27,7 @@
         // Callback function to execute when mutations are observed
         const callback = (mutationList, observer) => {
             // Minimize thumbnails if any of below elements are found in added nodes
-            const targetElements = ["YTD-VIDEO", "YTD-PLAYLIST", "YTD-CHANNEL", "YTD-RADIO"];
+            const targetElements = ["YTD-VIDEO", "YTD-PLAYLIST", "YTD-CHANNEL", "YTD-RADIO", "YTD-MOVIE"];
 
             // Loop through added nodes
             for (const mutation of mutationList) {
@@ -46,7 +46,7 @@
 
         // Set observer to the target node
         observer.observe(targetNode,{
-            attributes: true, childList: true, subtree: true
+            attributes: false, childList: true, subtree: true
         });
     };
 
