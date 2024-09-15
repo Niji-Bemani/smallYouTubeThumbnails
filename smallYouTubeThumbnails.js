@@ -19,7 +19,7 @@
             .forEach(node => {node.style.maxWidth = 0});
     };
 
-    // Add a MutationObserver on #contents element
+    // Add a MutationObserver on ytd-app element
     const startObserver = function() {
         // Select the node that will be observed for mutations
         const targetNode = document.querySelector("ytd-app");
@@ -44,7 +44,7 @@
         // Create an observer instance linked to the callback function
         const observer = new MutationObserver(callback);
 
-        // Set observer to target node
+        // Set observer to the target node
         observer.observe(targetNode,{
             attributes: true, childList: true, subtree: true
         });
